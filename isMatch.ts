@@ -38,13 +38,13 @@ function isMatch(s: string, p: string): boolean {
   return dp[m][n]
 }
 
-function isMatch(s: string, p: string): boolean {
-  // Convert the pattern `p` into a valid regular expression
-  const regex = new RegExp(`^${p}$`)
+// function isMatch(s: string, p: string): boolean {
+//   // Convert the pattern `p` into a valid regular expression
+//   const regex = new RegExp(`^${p}$`)
 
-  // Test the string `s` against the regular expression
-  return regex.test(s)
-}
+//   // Test the string `s` against the regular expression
+//   return regex.test(s)
+// }
 
 console.log(isMatch('aa', 'a'))
 console.log(isMatch('aa', '*'))
