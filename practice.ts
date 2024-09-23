@@ -24,3 +24,35 @@ function twoSum(arr: number[], target: number) {
 // console.log(twoSum([2, 7, 11, 15], 9))
 // console.log(twoSum([3, 2, 4], 6))
 // console.log(twoSum([3, 3], 6))
+
+// Write a function: lengthOfLongestSubString
+// takes in a string.
+// returns the length of the longest substring without repeating character
+// lengthOfLongestSubString('abcabcbb') ===>> 3
+// lengthOfLongestSubString('bbbbb') ===>> 1
+// lengthOfLongestSubString('pwwkew') ===>> 3
+
+function lengthOfLongestSubString(s: string) {
+  let current = ''
+  let longest = 0
+
+  for (let i = 0; i < s.length; i++) {
+    if (!current.includes(s[i])) {
+      current += s[i]
+    } else {
+      const index = current.indexOf(s[i])
+      current = current.slice(index + 1) + s[i]
+    }
+    console.log('current:', current)
+
+    longest = Math.max(longest, current.length)
+  }
+
+  return longest
+}
+
+console.log(lengthOfLongestSubString('abcabcbb'))
+console.log(lengthOfLongestSubString('bbbbb'))
+console.log(lengthOfLongestSubString('pwwkew'))
+console.log(lengthOfLongestSubString('au'))
+console.log(lengthOfLongestSubString('dvdf'))
