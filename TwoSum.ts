@@ -1,7 +1,7 @@
 // an array of integers and an integer = target
 // return the index of the two elements in the array that adding their values would give us the target
 
-function twoSum(arr: number[], num: number) {
+function twoSums(arr: number[], num: number) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] + arr[j] === num) {
