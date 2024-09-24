@@ -32,18 +32,40 @@ function twoSum(arr: number[], target: number) {
 // lengthOfLongestSubString('bbbbb') ===>> 1
 // lengthOfLongestSubString('pwwkew') ===>> 3
 
-function lengthOfLongestSubString(s: string) {
-  let current = ''
+// function lengthOfLongestSubString(s: string) {
+//   let current = ''
+//   let longest = 0
+
+//   for (let i = 0; i < s.length; i++) {
+//     if (!current.includes(s[i])) {
+//       current += s[i]
+//     } else {
+//       const index = current.indexOf(s[i])
+//       current = current.slice(index + 1) + s[i]
+//     }
+//     console.log('current:', current)
+
+//     longest = Math.max(longest, current.length)
+//   }
+
+//   return longest
+// }
+
+function lengthOfLongestSubString(str: string): number {
+  if (str.length < 2) return str.length
+
   let longest = 0
 
-  for (let i = 0; i < s.length; i++) {
-    if (!current.includes(s[i])) {
-      current += s[i]
+  let current = ''
+
+  for (let i = 0; i < str.length; i++) {
+    if (!current.includes(str[i])) {
+      current += str[i]
     } else {
-      const index = current.indexOf(s[i])
-      current = current.slice(index + 1) + s[i]
+      const index = current.indexOf(str[i])
+      current = current.slice(index + 1) + str[i]
+      console.log(current)
     }
-    console.log('current:', current)
 
     longest = Math.max(longest, current.length)
   }
