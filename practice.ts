@@ -168,7 +168,33 @@ const is_Valid = function (str: string): boolean {
   return stack.length === 0
 }
 
-console.log(is_Valid('()'))
-console.log(is_Valid('()[]{}'))
-console.log(is_Valid('(]'))
-console.log(is_Valid('([])'))
+// console.log(is_Valid('()'))
+// console.log(is_Valid('()[]{}'))
+// console.log(is_Valid('(]'))
+// console.log(is_Valid('([])'))
+
+// Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+const searhInsert = function (nums: number[], target: number) {
+  let left = 0
+  let right = nums.length
+
+  while (left < right) {
+    let mid = Math.floor((left + right) / 2)
+    const v = nums[mid]
+
+    if (v === target) {
+      return v
+    } else if (v > target) {
+      right = mid
+    } else {
+      left = mid + 1
+    }
+  }
+
+  nums.splice(left, 0, target)
+
+  return left
+}
+
+console.log(searhInsert([1, 3, 5, 6], 2))
