@@ -135,5 +135,40 @@ const get_Common = function (arr: string[]) {
   return result
 }
 
-console.log(get_Common(['flower', 'flow', 'flight']))
-console.log(get_Common(['dog', 'racecar', 'car']))
+// console.log(get_Common(['flower', 'flow', 'flight']))
+// console.log(get_Common(['dog', 'racecar', 'car']))
+
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+// fn isValid
+// takes in a string of bracket characters
+
+const is_Valid = function (str: string): boolean {
+  // create a stack
+  const map: { [key: string]: string } = {
+    ')': '(',
+    '}': '{',
+    ']': '[',
+  }
+
+  const stack = []
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i]
+
+    if (char === '(' || char === '{' || char === '[') {
+      stack.push(char)
+    } else {
+      if (stack[stack.length - 1] === map[char]) {
+        stack.pop()
+      }
+    }
+  }
+
+  return stack.length === 0
+}
+
+console.log(is_Valid('()'))
+console.log(is_Valid('()[]{}'))
+console.log(is_Valid('(]'))
+console.log(is_Valid('([])'))
