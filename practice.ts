@@ -73,8 +73,42 @@ function lengthOfLongestSubString(str: string): number {
   return longest
 }
 
-console.log(lengthOfLongestSubString('abcabcbb'))
-console.log(lengthOfLongestSubString('bbbbb'))
-console.log(lengthOfLongestSubString('pwwkew'))
-console.log(lengthOfLongestSubString('au'))
-console.log(lengthOfLongestSubString('dvdf'))
+// console.log(lengthOfLongestSubString('abcabcbb'))
+// console.log(lengthOfLongestSubString('bbbbb'))
+// console.log(lengthOfLongestSubString('pwwkew'))
+// console.log(lengthOfLongestSubString('au'))
+// console.log(lengthOfLongestSubString('dvdf'))
+
+// Given a roman numeral, convert it to an integer.
+const roman_To_Int = function (s: string) {
+  const map: { [key: string]: number } = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  }
+
+  let result = 0
+
+  for (let i = 0; i < s.length; ++i) {
+    const currentVal = map[s[i]]
+    const nextVal = map[s[i + 1]]
+
+    if (currentVal < nextVal) {
+      result -= currentVal
+    } else {
+      result += currentVal
+    }
+  }
+
+  return result
+}
+
+console.log(roman_To_Int('III'))
+console.log(roman_To_Int('LVIII'))
+console.log(roman_To_Int('MCMXCIV'))
+
+// the problem is that romanLetterMap[rom_numerals[i+1]] evaluates to undefined when it's the end of the input string.
