@@ -107,8 +107,33 @@ const roman_To_Int = function (s: string) {
   return result
 }
 
-console.log(roman_To_Int('III'))
-console.log(roman_To_Int('LVIII'))
-console.log(roman_To_Int('MCMXCIV'))
+// console.log(roman_To_Int('III'))
+// console.log(roman_To_Int('LVIII'))
+// console.log(roman_To_Int('MCMXCIV'))
 
-// the problem is that romanLetterMap[rom_numerals[i+1]] evaluates to undefined when it's the end of the input string.
+// Write a function to find the longest common prefix string amongst an array of strings.
+// fn getCommon
+// takes in an array of strings.empty array? would it always contain strings?
+// returns the longest common prefix with al the strings in the array.
+
+const get_Common = function (arr: string[]) {
+  arr = arr.sort((a, b) => a.length - b.length)
+
+  const firStr = arr[0]
+  const lastStr = arr[arr.length - 1]
+
+  let result = ''
+
+  for (let i = 0; i < lastStr.length; i++) {
+    if (firStr[i] === lastStr[i]) {
+      result += firStr[i]
+    } else {
+      break
+    }
+  }
+
+  return result
+}
+
+console.log(get_Common(['flower', 'flow', 'flight']))
+console.log(get_Common(['dog', 'racecar', 'car']))
