@@ -24,6 +24,21 @@
 //     Each element in the array appears twice except for one element which appears only once.
 
 function singleNumber(nums: number[]): number {
+  const map: Record<number, number> = {};
+
+  nums.forEach((num) => {
+    if (map[num]) {
+      map[num]++;
+    } else {
+      map[num] = 1;
+    }
+  });
+
+  for (const key in map) {
+    if (map[key] < 2) {
+      return Number(key);
+    }
+  }
   return 0;
 }
 
