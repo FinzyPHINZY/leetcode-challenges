@@ -19,3 +19,10 @@
 //     -109 <= nums[i] <= 109
 
 // Follow-up: Could you solve the problem in linear time and in O(1) space?
+
+function majorityElement(nums: number[]): number {
+  return 0;
+}
+
+console.log(majorityElement([3, 2, 3]));
+console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
