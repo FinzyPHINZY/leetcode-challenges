@@ -29,3 +29,23 @@
 // Constraints:
 
 //     1 <= columnNumber <= 231 - 1
+
+function convertToTitle(columnNumber: number): string {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let result = '';
+
+  while (columnNumber > 0) {
+    columnNumber--;
+
+    const remainder = columnNumber % 26;
+    result = letters.charAt(remainder) + result;
+    columnNumber = Math.floor(columnNumber / 26);
+  }
+
+  return result;
+}
+
+console.log(convertToTitle(1));
+console.log(convertToTitle(26));
+console.log(convertToTitle(28));
+console.log(convertToTitle(701));
