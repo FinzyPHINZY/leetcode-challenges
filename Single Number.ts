@@ -45,3 +45,12 @@ function singleNumber(nums: number[]): number {
 console.log(singleNumber([2, 2, 1]));
 console.log(singleNumber([4, 1, 2, 1, 2]));
 console.log(singleNumber([1]));
+
+// optimized implementation
+function singleNumberr(nums: number[]): number {
+  let result = 0;
+  for (const num of nums) {
+    result ^= num; // XOR operation
+  }
+  return result;
+}
