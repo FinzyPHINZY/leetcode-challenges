@@ -33,7 +33,15 @@
 //     columnTitle is in the range ["A", "FXSHRXW"].
 
 function titleToNumber(columnTitle: string): number {
-  return 0;
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let result = 0;
+
+  columnTitle.split('').forEach((char) => {
+    result *= 26;
+    result += letters.indexOf(char) + 1;
+  });
+
+  return result;
 }
 
 console.log(titleToNumber('A'));
