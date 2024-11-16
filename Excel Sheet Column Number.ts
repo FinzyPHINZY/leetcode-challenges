@@ -31,3 +31,7 @@
 //     1 <= columnTitle.length <= 7
 //     columnTitle consists only of uppercase English letters.
 //     columnTitle is in the range ["A", "FXSHRXW"].
+
+function titleToNumber(columnTitle: string): number {
+  return 0;
+}
