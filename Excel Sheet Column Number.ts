@@ -35,3 +35,7 @@
 function titleToNumber(columnTitle: string): number {
   return 0;
 }
+
+console.log(titleToNumber('A'));
+console.log(titleToNumber('AB'));
+console.log(titleToNumber('ZY'));
