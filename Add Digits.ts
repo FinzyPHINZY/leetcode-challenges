@@ -21,7 +21,14 @@
 // Follow up: Could you do it without any loop/recursion in O(1) runtime?
 
 function addDigits(num: number): number {
-  return 0;
+  while (num > 9) {
+    num = num
+      .toString()
+      .split('')
+      .map(Number)
+      .reduce((sum, num) => sum + num, 0);
+  }
+  return num;
 }
 
 console.log(addDigits(38));
