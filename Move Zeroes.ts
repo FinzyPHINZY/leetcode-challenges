@@ -18,3 +18,8 @@
 //     -231 <= nums[i] <= 231 - 1
 
 //  Follow up: Could you minimize the total number of operations done?
+
+/**
+ Do not return anything, modify nums in-place instead.
+ */
+function moveZeroes(nums: number[]): void {}
