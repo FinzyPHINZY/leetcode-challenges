@@ -22,7 +22,30 @@
 /**
  Do not return anything, modify nums in-place instead.
  */
-function moveZeroes(nums: number[]): void {}
+// function moveZeroes(nums: number[]): void {
 
+const moveZeroes = (nums: number[]) => {
+  let n = nums.length - 1;
+  let sorted = false;
+
+  while (!sorted) {
+    sorted = true;
+    for (let i = 0; i < n; i++) {
+      if (nums[i] === 0) {
+        const temp = nums[i];
+        nums[i] = nums[i + 1];
+        nums[i + 1] = temp;
+
+        sorted = false;
+      }
+    }
+
+    n--;
+  }
+};
 console.log(moveZeroes([0, 1, 0, 3, 12]));
 console.log(moveZeroes([0]));
+
+// takes in an array of numbers
+// move every zero to the end of the array
+// iterate though the array. find 0, if o, move to the end of the array. .
