@@ -27,10 +27,26 @@
 
 // Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
 
+// function missingNumber(nums: number[]): number {
+//   const n = nums.length;
+//   let numArr: number[] = [];
+//   for (let i = 0; i <= n; i++) {
+//     numArr.push(i);
+//   }
+
+//   const value = numArr.find((num) => !nums.includes(num));
+//   return value!;
+// }
+
 function missingNumber(nums: number[]): number {
-  return 0;
+  const n = nums.length;
+  const expectedSum = (n * (n + 1)) / 2;
+  const actualSum = nums.reduce((sum, num) => sum + num, 0);
+  return expectedSum - actualSum;
 }
 
 console.log(missingNumber([3, 0, 1]));
 console.log(missingNumber([0, 1]));
 console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));
+
+// let's assume our range is always from 0 and above.
