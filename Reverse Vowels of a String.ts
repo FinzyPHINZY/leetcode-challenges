@@ -24,8 +24,33 @@
 //     s consist of printable ASCII characters.
 
 function reverseVowels(s: string): string {
-  return '';
+  const vowels = 'aeiouAEIOU';
+  const sVowels = s
+    .split('')
+    .filter((char) => vowels.includes(char))
+    .reverse();
+
+  const output = s
+    .split('')
+    .map((char) => {
+      if (vowels.includes(char)) {
+        return sVowels.shift();
+      } else {
+        return char;
+      }
+    })
+    .join('');
+
+  console.log(output);
+  return output;
 }
 
 console.log(reverseVowels('IceCreAm'));
 console.log(reverseVowels('leetcode'));
+
+// takes in a string
+// returns the string with the vowels reversed.
+// vowels = aeiouAEIOU
+// create a variable for all the vowels and reverse it.
+// itreate through the string.
+// if the char is a vowel, swap it with the first character in the reversed vowel.
