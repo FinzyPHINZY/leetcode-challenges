@@ -22,3 +22,10 @@
 
 //     1 <= s.length <= 3 * 105
 //     s consist of printable ASCII characters.
+
+function reverseVowels(s: string): string {
+  return '';
+}
+
+console.log(reverseVowels('IceCreAm'));
+console.log(reverseVowels('leetcode'));
