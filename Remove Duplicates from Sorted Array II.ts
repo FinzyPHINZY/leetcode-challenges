@@ -41,3 +41,10 @@
 //     1 <= nums.length <= 3 * 104
 //     -104 <= nums[i] <= 104
 //     nums is sorted in non-decreasing order.
+
+function removeDuplicates(nums: number[]): number {
+  return 5;
+}
+
+console.log(removeDuplicates([1, 1, 1, 2, 2, 3]));
+console.log(removeDuplicates([0, 0, 1, 1, 1, 1, 2, 3, 3]));
