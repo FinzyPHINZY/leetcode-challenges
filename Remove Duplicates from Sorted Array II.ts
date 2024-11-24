@@ -42,9 +42,28 @@
 //     -104 <= nums[i] <= 104
 //     nums is sorted in non-decreasing order.
 
-function removeDuplicates(nums: number[]): number {
-  return 5;
+function removeDuplicatess(nums: number[]): number {
+  const n = nums.length;
+  if (n <= 2) return n;
+
+  let writeIndex = 1;
+  let count = 1;
+
+  for (let i = 1; i < n; i++) {
+    if (nums[i] === nums[i - 1]) {
+      count++;
+    } else {
+      count = 1; // Reset count for a new number.
+    }
+
+    if (count <= 2) {
+      nums[writeIndex] = nums[i];
+      writeIndex++;
+    }
+  }
+
+  return writeIndex;
 }
 
-console.log(removeDuplicates([1, 1, 1, 2, 2, 3]));
-console.log(removeDuplicates([0, 0, 1, 1, 1, 1, 2, 3, 3]));
+console.log(removeDuplicatess([1, 1, 1, 2, 2, 3]));
+console.log(removeDuplicatess([0, 0, 1, 1, 1, 1, 2, 3, 3]));
