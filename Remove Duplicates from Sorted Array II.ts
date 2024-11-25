@@ -67,3 +67,18 @@ function removeDuplicatess(nums: number[]): number {
 
 console.log(removeDuplicatess([1, 1, 1, 2, 2, 3]));
 console.log(removeDuplicatess([0, 0, 1, 1, 1, 1, 2, 3, 3]));
+
+function subsets(nums: number[]): number[][] {
+  const result = [];
+  
+  function dfs(i: number, cur: number[]) {
+    if (i === nums.length) {
+      result.push(cur);
+      return;
+    }
+
+    dfs(i + 1, cur.filter((el) => el !== nums[i]));
+    dfs(i + 1, cur);
+  }
+  
+  dfs(0, nums);
