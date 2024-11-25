@@ -19,3 +19,23 @@
 //     1 <= nums.length <= 10
 //     -10 <= nums[i] <= 10
 //     All the numbers of nums are unique.
+
+function subsets(nums: number[]): number[][] {
+  const result = [[]];
+
+  function dfs(i: number, cur) {
+    if (i === nums.length) {
+      result.push(cur);
+      return;
+    }
+
+    dfs(i + 1, cur);
+    dfs(i + 1, cur.concat(nums[i]));
+  }
+
+  dfs(0, []);
+
+  return result;
+}
+
+console.log(subsets([1, 2, 3]));
