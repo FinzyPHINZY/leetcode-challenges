@@ -19,8 +19,17 @@
 // Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
 
 function findDisappearedNumbers(nums: number[]): number[] {
-  return [0];
+  const array = Array.from({ length: nums.length }, (_, i) => i + 1);
+
+  return array.filter((num) => !nums.includes(num));
 }
 
 console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]));
 console.log(findDisappearedNumbers([1, 1]));
+
+// fn findDisappearedNumbers()
+// takes in an array of numbers (nums)
+// n = nums.length
+// get an array of numbers of 1 to n = nNums:
+// iterate through nums.
+// return an array of the numbers in nNums that aren't found in nums
