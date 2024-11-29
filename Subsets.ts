@@ -23,7 +23,7 @@
 function subsets(nums: number[]): number[][] {
   const result = [[]];
 
-  function dfs(i: number, cur) {
+  function dfs(i: number, cur: any) {
     if (i === nums.length) {
       result.push(cur);
       return;
