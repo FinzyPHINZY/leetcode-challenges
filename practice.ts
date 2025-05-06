@@ -1,86 +1,49 @@
-// This contains my attempts to solve previous completed problems again.
+// Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
-// Write a function: twoSum
-// takes in an array of integers and an integer(target).
-// return an array of two integers from the original array. of which the addition equals to the target.
-// twoSum([2,7,11,15], 9) ===>> [0,1]
-// twoSum([3,2,4], 6) ===>> [1,2]
-// twoSum([3,3], 6) ===>> [0,1]
+// Symbol       Value
+// I             1
+// V             5
+// X             10
+// L             50
+// C             100
+// D             500
+// M             1000
 
-function twoSum(arr: number[], target: number) {
-  const result: number[] = []
-  // iterate through the array.
-  for (let i = 0; i < arr.length; i++) {
-    // run each number in the array against every other number in the array.
-    for (let j = 0; j < arr.length; j++) {
-      // check for match. a + b = target.
-      if (arr[i] + arr[j] === target && j !== i) {
-        return [i, j]
-      }
-    }
-  }
-}
+// For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
 
-// console.log(twoSum([2, 7, 11, 15], 9))
-// console.log(twoSum([3, 2, 4], 6))
-// console.log(twoSum([3, 3], 6))
+// Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
 
-// Write a function: lengthOfLongestSubString
-// takes in a string.
-// returns the length of the longest substring without repeating character
-// lengthOfLongestSubString('abcabcbb') ===>> 3
-// lengthOfLongestSubString('bbbbb') ===>> 1
-// lengthOfLongestSubString('pwwkew') ===>> 3
-
-// function lengthOfLongestSubString(s: string) {
-//   let current = ''
-//   let longest = 0
-
-//   for (let i = 0; i < s.length; i++) {
-//     if (!current.includes(s[i])) {
-//       current += s[i]
-//     } else {
-//       const index = current.indexOf(s[i])
-//       current = current.slice(index + 1) + s[i]
-//     }
-//     console.log('current:', current)
-
-//     longest = Math.max(longest, current.length)
-//   }
-
-//   return longest
-// }
-
-function lengthOfLongestSubString(str: string): number {
-  if (str.length < 2) return str.length
-
-  let longest = 0
-
-  let current = ''
-
-  for (let i = 0; i < str.length; i++) {
-    if (!current.includes(str[i])) {
-      current += str[i]
-    } else {
-      const index = current.indexOf(str[i])
-      current = current.slice(index + 1) + str[i]
-      console.log(current)
-    }
-
-    longest = Math.max(longest, current.length)
-  }
-
-  return longest
-}
-
-// console.log(lengthOfLongestSubString('abcabcbb'))
-// console.log(lengthOfLongestSubString('bbbbb'))
-// console.log(lengthOfLongestSubString('pwwkew'))
-// console.log(lengthOfLongestSubString('au'))
-// console.log(lengthOfLongestSubString('dvdf'))
+//     I can be placed before V (5) and X (10) to make 4 and 9.
+//     X can be placed before L (50) and C (100) to make 40 and 90.
+//     C can be placed before D (500) and M (1000) to make 400 and 900.
 
 // Given a roman numeral, convert it to an integer.
-const roman_To_Int = function (s: string) {
+
+// Example 1:
+
+// Input: s = "III"
+// Output: 3
+// Explanation: III = 3.
+
+// Example 2:
+
+// Input: s = "LVIII"
+// Output: 58
+// Explanation: L = 50, V= 5, III = 3.
+
+// Example 3:
+
+// Input: s = "MCMXCIV"
+// Output: 1994
+// Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+// Constraints:
+
+//     1 <= s.length <= 15
+//     s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
+//     It is guaranteed that s is a valid roman numeral in the range [1, 3999].
+
+function romanToIntP(roman: string): number {
   const map: { [key: string]: number } = {
     I: 1,
     V: 5,
@@ -89,112 +52,24 @@ const roman_To_Int = function (s: string) {
     C: 100,
     D: 500,
     M: 1000,
-  }
+  };
 
-  let result = 0
+  let result = 0;
 
-  for (let i = 0; i < s.length; ++i) {
-    const currentVal = map[s[i]]
-    const nextVal = map[s[i + 1]]
+  for (let i = 0; i < roman.length; i++) {
+    const currentVal = map[roman[i]];
+    const nextVal = map[roman[i + 1]];
 
     if (currentVal < nextVal) {
-      result -= currentVal
+      result -= currentVal;
     } else {
-      result += currentVal
+      result += currentVal;
     }
   }
 
-  return result
+  return result;
 }
 
-// console.log(roman_To_Int('III'))
-// console.log(roman_To_Int('LVIII'))
-// console.log(roman_To_Int('MCMXCIV'))
-
-// Write a function to find the longest common prefix string amongst an array of strings.
-// fn getCommon
-// takes in an array of strings.empty array? would it always contain strings?
-// returns the longest common prefix with al the strings in the array.
-
-const get_Common = function (arr: string[]) {
-  arr = arr.sort((a, b) => a.length - b.length)
-
-  const firStr = arr[0]
-  const lastStr = arr[arr.length - 1]
-
-  let result = ''
-
-  for (let i = 0; i < lastStr.length; i++) {
-    if (firStr[i] === lastStr[i]) {
-      result += firStr[i]
-    } else {
-      break
-    }
-  }
-
-  return result
-}
-
-// console.log(get_Common(['flower', 'flow', 'flight']))
-// console.log(get_Common(['dog', 'racecar', 'car']))
-
-// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
-// fn isValid
-// takes in a string of bracket characters
-
-const is_Valid = function (str: string): boolean {
-  // create a stack
-  const map: { [key: string]: string } = {
-    ')': '(',
-    '}': '{',
-    ']': '[',
-  }
-
-  const stack = []
-
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i]
-
-    if (char === '(' || char === '{' || char === '[') {
-      stack.push(char)
-    } else {
-      if (stack[stack.length - 1] === map[char]) {
-        stack.pop()
-      }
-    }
-  }
-
-  return stack.length === 0
-}
-
-// console.log(is_Valid('()'))
-// console.log(is_Valid('()[]{}'))
-// console.log(is_Valid('(]'))
-// console.log(is_Valid('([])'))
-
-// Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
-
-const searhInsert = function (nums: number[], target: number) {
-  let left = 0
-  let right = nums.length
-
-  while (left < right) {
-    let mid = Math.floor((left + right) / 2)
-    const v = nums[mid]
-
-    if (v === target) {
-      return v
-    } else if (v > target) {
-      right = mid
-    } else {
-      left = mid + 1
-    }
-  }
-
-  nums.splice(left, 0, target)
-
-  return left
-}
-
-console.log(searhInsert([1, 3, 5, 6], 2))
+console.log(romanToIntP('III')); // Output: 3
+console.log(romanToIntP('LVIII')); // Output: 58
+console.log(romanToIntP('MCMXCIV')); // Output: 1994
