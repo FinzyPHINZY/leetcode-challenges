@@ -105,6 +105,8 @@ function romanToIntP(roman: string): number {
 // Output: ["a","b","c"]
 
 function letterCombinationsP(str: string): string[] {
+  if (str.length === 0) return [];
+
   const map: { [key: string]: string[] } = {
     '2': ['a', 'b', 'c'],
     '3': ['d', 'e', 'f'],
@@ -119,15 +121,15 @@ function letterCombinationsP(str: string): string[] {
   const result: string[] = [];
 
   const backtrack = (combination: string, nextDigits: string) => {
-    if (nextDigits.length === 0) {
-      result.push(combination);
-    } else {
-      const digit = nextDigits[0];
-      const letters = map[digit];
-      if (letters) {
-        for (const letter of letters) {
-          backtrack(combination + letter, nextDigits.slice(1));
-        }
+    if (nextDigits.length === 0) result.push(combination);
+
+    const digit = nextDigits[0];
+
+    const letters = map[digit];
+
+    if (letters) {
+      for (const letter of letters) {
+        backtrack(combination + letter, nextDigits.slice(1));
       }
     }
   };
@@ -138,5 +140,5 @@ function letterCombinationsP(str: string): string[] {
 }
 
 console.log(letterCombinationsP('23'));
-// console.log(letterCombinationsP(''));
-// console.log(letterCombinationsP('2'));
+console.log(letterCombinationsP(''));
+console.log(letterCombinationsP('2'));
