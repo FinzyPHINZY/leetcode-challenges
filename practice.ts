@@ -354,6 +354,39 @@ function twoSumP(arr: number[], num: number) {
   }
 }
 
-console.log(twoSumP([2, 7, 11, 15], 9)); // Output: [0,1]
-console.log(twoSumP([3, 2, 4], 6)); // Output: [1,2]
-console.log(twoSumP([3, 3], 6)); // Output: [0,1]
+// console.log(twoSumP([2, 7, 11, 15], 9)); // Output: [0,1]
+// console.log(twoSumP([3, 2, 4], 6)); // Output: [1,2]
+// console.log(twoSumP([3, 3], 6)); // Output: [0,1]
+
+// Write a function to find the longest common prefix string amongst an array of strings.
+
+// If there is no common prefix, return an empty string "".
+
+// Example 1:
+
+// Input: strs = ["flower","flow","flight"]
+// Output: "fl"
+
+// Example 2:
+
+// Input: strs = ["dog","racecar","car"]
+// Output: ""
+// Explanation: There is no common prefix among the input strings.
+
+function longestCommonPrefixP(strs: string[]): string {
+  if (strs.length === 0) return '';
+
+  let prefix = strs[0];
+
+  for (let i = 1; i < strs.length; i++) {
+    while (strs[i].indexOf(prefix) !== 0) {
+      prefix = prefix.slice(0, prefix.length - 1);
+    }
+  }
+
+  return prefix;
+}
+
+console.log(longestCommonPrefixP(['flower', 'flow', 'flight'])); // Output: "fl"
+console.log(longestCommonPrefixP(['dog', 'racecar', 'car'])); // Output: ""
+console.log(longestCommonPrefixP([''])); // Output: ""
